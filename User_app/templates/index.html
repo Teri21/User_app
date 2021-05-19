@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    {% load static %} -->
+    <title>User app</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid rgb(19, 18, 18);
+        border-collapse: collapse;
+      }
+      body {
+        margin-left: 10%;
+      }
+      th,
+      td {
+        padding: 5px;
+      }
+      th {
+        text-align: left;
+        background-color: rgb(211, 202, 202);
+        color: rgb(17, 16, 16);
+      }
+      tr:nth-child(even) {
+        background-color: rgb(245, 239, 239);
+      }
+      tr:nth-child(odd) {
+        background-color: #fff;
+      }
+
+      h1,
+      h2 {
+        color: gray;
+        text-align: center;
+        margin-right: 10%;
+      }
+      h2 {
+        border-top: 2px solid black;
+        padding-top: 10px;
+      }
+      form {
+        text-align: center;
+        margin-right: 15%;
+      }
+      input {
+        border: 2px solid black;
+        padding: 5px 10px;
+      }
+      #add {
+        margin-left: 25px;
+        box-shadow: 2px 2px;
+      }
+
+      label {
+        display: inline-block;
+        width: 110px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>All the Users</h1>
+    <table style="width: 90%">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+      </tr>
+      <!-- looping through each User! -->
+      {% for one_user in All_the_Users %}
+      <tr>
+        <td>>{{ one_user.id }}</td>
+        <td>{{ one_user.first_name }} {{ one_users.last_name }}</td>
+        <td>{{ one_user.email_address }}</td>
+        <td>{{ one_user.age }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Add a User</h2>
+
+    <form action="/users/create" method="POST">
+      {% csrf_token %}
+
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" />
+
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname" /><br /><br />
+
+      <label for="fname">Email:</label>
+      <input type="text" id="email" name="email" />
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" /><br /><br />
+      <input type="submit" id="add" value="Add" />
+    </form>
+  </body>
+</html>
